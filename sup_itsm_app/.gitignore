@@ -1,13 +1,15 @@
 # Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
-# infos
-kkk.md
+# informação de usuário e senha login previc
+previc_user_suth_info.md
 
 # dependencies
 node_modules/
 
 # Expo
-.expo/
+.expo
+.expo/*
+.expo-shared/
 dist/
 web-build/
 
@@ -42,3 +44,12 @@ yarn-error.*
 
 expo-env.d.ts
 # @end expo-cli
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

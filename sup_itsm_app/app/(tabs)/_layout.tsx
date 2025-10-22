@@ -1,7 +1,8 @@
 import React from 'react';
+import { Alert } from 'react-native';
+import { Tabs, useRouter } from 'expo-router';
+
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
 
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -13,6 +14,19 @@ function TabBarIcon(props: {
   color: string;
 }) {
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
+}
+
+// Atribuir Comportamente ao pressionar um botão tab
+function handleExitTabPress(event: any) {
+  // previne navegação ao pressionar tab EXIT
+  event.preventDefault();
+
+  Alert.alert('Deseja encerrar a sessão?', 'Acesse o menu central clicando em "PREVIC" para acessar o botão de LogOut', [
+    {
+      text: 'OK',
+      onPress: () => null
+    }
+  ]);
 }
 
 export default function TabLayout() {
@@ -31,27 +45,16 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="exit"
         options={{
-          title: 'Exit',
+          title: 'Sair',
           tabBarIcon: ({ color }) => <TabBarIcon name="sign-out" color={color} />,
+        }}
+        listeners={{
+          tabPress: handleExitTabPress,
         }}
       />
     </Tabs>
