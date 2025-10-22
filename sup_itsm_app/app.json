@@ -17,6 +17,7 @@
       "bundleIdentifier": "com.devhb.previc-4d-otrs"
     },
     "android": {
+      "versionCode": 2,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/previc_adaptive-icon.png",
         "backgroundColor": "#ffffff"
